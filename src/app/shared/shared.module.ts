@@ -1,25 +1,32 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material';
-
-import { HeaderComponent } from './header/header.component';
-import { FooterComponent } from './footer/footer.component';
+import { ImagesUploaderComponent } from './images-uploader/images-uploader.component';
+import { CategoriesComponent } from './categories/categories.component';
+import { MatDialogModule, MatIconModule } from '@angular/material';
+import { CategoriesListComponent } from './categories-list/categories-list.component';
 
 @NgModule({
   imports: [
     CommonModule,
-    MatButtonModule,
+
     MatIconModule,
+    MatDialogModule,
   ],
   declarations: [
-    HeaderComponent,
-    FooterComponent,
+    ImagesUploaderComponent,
+    CategoriesComponent,
+    CategoriesListComponent,
   ],
   exports: [
-    HeaderComponent,
-    FooterComponent,
-  ]
+    MatIconModule,
+    MatDialogModule,
+
+    ImagesUploaderComponent,
+    CategoriesComponent,
+    CategoriesListComponent,
+  ],
+  entryComponents: [
+    CategoriesComponent,
+  ],
 })
 export class SharedModule { }

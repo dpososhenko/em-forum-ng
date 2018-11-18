@@ -1,0 +1,8 @@
+<ul class="list" *ngIf="categoriesList.length">
+  <li *ngFor="let item of categoriesList"
+      class="list__item list__item--linked"
+      (click)="categorySelected.emit({ level: categoryLevel, id: item.id })">
+    <span class="mat-body-strong">{{ item.name }}</span>
+    <mat-icon *ngIf="item.child">keyboard_arrow_right</mat-icon>
+  </li>
+</ul>

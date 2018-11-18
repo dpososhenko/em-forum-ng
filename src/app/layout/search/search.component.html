@@ -1,0 +1,43 @@
+<div class="search">
+  <div class="container">
+    <div class="search__department">
+      <mat-form-field>
+        <mat-select [(value)]="chosenComplex">
+          <mat-option *ngFor="let item of complexes | keyvalue" [value]="item.key">
+            {{ item.value }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="search__field">
+      <div class="search__feature"
+           [ngClass]="{ 'search__feature--float': isSearchFieldFocused }"
+           (click)="focusSearchInput()">
+
+        <div class="feature" *ngIf="showSearchFeature">
+          <div class="feature__item">Поиск</div>
+          <div class="feature__item">Вызвать сантехника</div>
+          <div class="feature__item">Купить детскую каляску</div>
+          <div class="feature__item">Поклеить обои</div>
+        </div>
+      </div>
+
+      <input type="text"
+             class="search__input"
+             #searchInputRef
+             [placeholder]="!showSearchFeature ? 'Поиск' : ''"
+             (blur)="onBlurSearchInput()"
+             [formControl]="searchInput">
+    </div>
+
+    <div class="search__actions">
+      <button
+        [routerLink]="['/market/add']"
+        mat-flat-button
+        color="primary">
+        + Объявление
+      </button>
+    </div>
+  </div>
+</div>

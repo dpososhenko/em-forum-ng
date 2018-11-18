@@ -1,0 +1,29 @@
+@import '~src/styles/typo';
+@import '~src/styles/colors';
+
+:host {
+  @include t-body;
+
+  display: flex;
+  align-items: center;
+}
+
+.user {
+  &--in {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    color: $accent-text;
+  }
+
+  &__avatar {
+    display: flex;
+    align-items: center;
+
+    .mat-icon {
+      width: auto;
+      height: auto;
+      font-size: 36px;
+    }
+  }
+}

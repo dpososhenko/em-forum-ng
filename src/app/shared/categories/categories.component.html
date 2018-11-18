@@ -1,0 +1,27 @@
+<div class="categories">
+  <div class="categories__header">
+    Выберите подходящую вам категорию
+  </div>
+  <div class="categories__main">
+    <app-categories-list
+      class="category"
+      (categorySelected)="selectCategory($event)"
+      categoryLevel="{{ CategoryLevel.HIGH }}"
+      [categoriesList]="clhList">
+    </app-categories-list>
+
+    <app-categories-list
+      class="category"
+      (categorySelected)="selectCategory($event)"
+      categoryLevel="{{ CategoryLevel.MEDIUM }}"
+      [categoriesList]="clmList">
+    </app-categories-list>
+
+    <app-categories-list
+      class="category"
+      (categorySelected)="selectCategory($event)"
+      categoryLevel="{{ CategoryLevel.LOW }}"
+      [categoriesList]="cllList">
+    </app-categories-list>
+  </div>
+</div>

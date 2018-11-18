@@ -1,0 +1,40 @@
+@import "~src/styles/typo";
+
+:host {
+  @include t-body();
+
+  display: flex;
+  flex: auto;
+}
+
+.list {
+  margin: 0;
+  padding: 0;
+
+  &__item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    cursor: pointer;
+
+    .mat-body-strong {
+      text-transform: uppercase;
+      font-size: 12px;
+    }
+
+    .mat-icon {
+      transition: all 0.2s ease-out;
+      margin-left: 4px;
+    }
+
+    &:hover {
+      .mat-icon {
+        margin-left: 8px;
+      }
+    }
+
+    &--linked {
+      color: #0d2c54;
+    }
+  }
+}

@@ -1,16 +1,19 @@
 <nav class="container">
   <div class="header__bar">
     <div class="header__logo">
-      <mat-icon>aspect_ratio</mat-icon>
+      <mat-icon class="logo__icon">aspect_ratio</mat-icon>
+      <span class="logo__text mat-body-strong">EM Forum</span>
     </div>
+
     <div class="header__navigation">
-      <button mat-button>Купи - Продай</button>
+      <button [routerLink]="['/market']" mat-button>Купи - Продай</button>
       <button mat-button>Мастер</button>
       <button mat-button>Поехали</button>
       <button mat-button>Новости ЖК</button>
     </div>
   </div>
-  <div class="header__account">
 
+  <div class="header__account">
+    <app-auth-widget></app-auth-widget>
   </div>
 </nav>

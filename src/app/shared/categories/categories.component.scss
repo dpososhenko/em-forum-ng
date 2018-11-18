@@ -1,0 +1,29 @@
+@import "~src/styles/typo";
+
+:host {
+  @include t-body();
+
+  display: flex;
+  width: 100%;
+}
+
+.categories {
+  display: flex;
+  flex: auto;
+  width: 100%;
+  flex-direction: column;
+
+  &__header {
+    padding: 16px;
+  }
+
+  &__main {
+    padding: 16px;
+    display: flex;
+    justify-content: start;
+  }
+}
+
+.category {
+  width: calc(100% / 3);
+}

@@ -1,0 +1,10 @@
+@import "~src/styles/typo";
+@import "~src/styles/colors";
+
+:host {
+  @include t-body;
+
+  display: flex;
+  color: $white;
+  background-color: $footer-bg;
+}
