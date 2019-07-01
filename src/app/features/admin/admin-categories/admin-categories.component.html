@@ -1,0 +1,47 @@
+<div class="category container">
+  <div class="category__container category__container--divided">
+    <h1 class="category__title mat-h1">Добавить категорию</h1>
+  </div>
+
+  <div class="category__container">
+    <form class="category__form">
+      <mat-form-field>
+        <mat-label>Имя категории</mat-label>
+        <input matInput placeholder="Имя">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Родительская категория</mat-label>
+        <input
+          type="text"
+          matInput
+          [formControl]="parentControl"
+          [matAutocomplete]="auto"
+          placeholder="Имя">
+
+        <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+          <mat-option *ngFor="let parent of filteredOptions | async" [value]="parent">
+            {{parent.name}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Прародительская категория</mat-label>
+        <input matInput placeholder="Имя">
+      </mat-form-field>
+
+      <mat-checkbox>Дочерние категории</mat-checkbox>
+
+      <button
+        mat-flat-button
+        type="submit"
+        class="category__button"
+        color="primary"
+      >
+        Accent
+      </button>
+    </form>
+  </div>
+</div>
+

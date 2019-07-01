@@ -8,7 +8,7 @@ import {
   MatButtonModule,
 } from '@angular/material';
 
-import { AuthModule } from '../auth/auth.module';
+import { AuthModule } from '../features/auth/auth.module';
 
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';

@@ -1,5 +1,6 @@
 @import "~src/styles/typo";
 @import "~src/styles/colors";
+@import "~src/styles/screens";
 
 :host {
   @include t-body;
@@ -18,9 +19,17 @@
 
   &__department {
     flex-grow: 0;
+    display: none;
+    border-right: 1px solid $border-color;
+
+    @include desktop() {
+      display: flex;
+    }
   }
 
   &__field {
+    display: flex;
+    align-items: center;
     flex-grow: 1;
   }
 
@@ -29,6 +38,16 @@
     border: none;
     outline: none;
     background-color: transparent;
+    margin-left: 8px;
+  }
+
+  &__icon {
+    margin-left: 8px;
+    color: $icon-inactive;
+
+    &--focused {
+      color: $accent;
+    }
   }
 
   &__feature {
@@ -55,6 +74,12 @@
     50%  { transform: translateY(-50%)  }
     75%  { transform: translateY(-25%)  }
     100% { transform: translateY(0%)    }
+  }
+
+  .actions {
+    &__button {
+
+    }
   }
 
   // Overwrite material styles

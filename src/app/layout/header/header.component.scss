@@ -1,40 +1,127 @@
 @import "~src/styles/colors";
+@import "~src/styles/screens";
 @import '~@angular/material/theming';
 
-:host {
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 0;
+}
+
+.header {
   @include mat-elevation(6, $footer-bg, 0.4);
 
   display: flex;
-  padding: 6px 0;
+  flex-direction: column;
+  width: 100%;
   background-color: $white;
+  position: sticky;
+  top: 0;
+  z-index: 1;
 
-  .container {
+  &__bar {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-  }
+    flex-direction: row-reverse;
+    place-content: center;
 
-  .header {
-    &__bar {
-      display: flex;
+    @include desktop() {
       flex-direction: row;
-      justify-content: center;
-      align-items: center;
-    }
-
-    &__logo {
-      display: flex;
-      justify-content: center;
-      align-items: center;
     }
   }
 
-  .logo {
-    &__icon,
-    &__text {
-      margin-right: 8px;
-      color: $primary-text;
+  &__burger {
+    display: flex;
+    place-content: center;
+    margin-right: 16px;
+
+    @include desktop() {
+      display: none;
     }
+  }
+
+  &__navigation {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    grid-template-columns: 100%;
+    position: absolute;
+    background-color: white;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    transform: translateX(-100%);
+    transition: all 0.3s ease-out;
+
+    &--active {
+      transform: translateX(0%);
+    }
+
+    @include desktop() {
+      transform: none;
+      width: auto;
+      height: auto;
+      position: relative;
+    }
+  }
+
+  &__logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+.logo {
+  &__icon,
+  &__text {
+    margin-right: 8px;
+    color: $accent-text;
+  }
+}
+
+.navigation {
+  &__close, &__list {
+    display: flex;
+    place-content: center;
+  }
+
+  &__close {
+    flex-direction: row;
+    padding: 16px;
+
+    @include desktop() {
+      display: none;
+    }
+  }
+
+  &__list {
+    flex-direction: column;
+
+    @include desktop() {
+      flex-direction: row;
+    }
+  }
+}
+
+//
+// Set all header mat-icons scale up to 1.2 for mobile view
+//
+
+::ng-deep mat-icon {
+  transform: scale(1.2);
+
+  @include tablet() {
+    transform: scale(1);
   }
 }

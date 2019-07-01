@@ -1,0 +1,95 @@
+<div class="market container">
+  <div class="container__header container__header--divided">
+    <h1 class="market__title mat-h1">Подать объявление</h1>
+  </div>
+
+  <form [formGroup]="marketAddForm" (ngSubmit)="onSubmit()" class="container__body">
+    <div class="market__section market__name">
+      <mat-form-field appearance="outline">
+        <mat-label>Заголовок</mat-label>
+        <input matInput placeholder="Заголовок" formControlName="title" required>
+      </mat-form-field>
+    </div>
+
+    <div class="market__section market__description">
+      <mat-form-field appearance="outline">
+        <textarea
+          formControlName="description"
+          matInput
+          matTextareaAutosize
+          matAutosizeMaxRows="5"
+          matAutosizeMinRows="3"
+          placeholder="Описание товара"
+        ></textarea>
+      </mat-form-field>
+    </div>
+
+    <div class="market__section market__categories categories">
+      <h3 class="market__sub-title mat-h3">Категория</h3>
+
+      <!--TODO: move button and path to component -->
+      <button
+        type="button"
+        class="market__button"
+        *ngIf="!selectedCategory"
+        mat-stroked-button
+        color="primary"
+        (click)="openCategoriesDialog()"
+      >
+        Выберить категорию
+      </button>
+
+
+      <!--TODO: open selected category level in the modal-->
+      <div *ngIf="selectedCategory" class="categories__path">
+        <span
+          class="categories__name"
+          *ngIf="selectedCategory.grandParentName"
+          (click)="openCategoriesDialog()"
+        >
+          <mat-icon class="categories__arrow">
+            keyboard_arrow_right
+          </mat-icon>
+          {{ selectedCategory.grandParentName }}
+        </span>
+
+        <span
+          *ngIf="selectedCategory.parentName"
+          class="categories__name"
+          (click)="openCategoriesDialog()"
+        >
+          <mat-icon class="categories__arrow">
+            keyboard_arrow_right
+          </mat-icon>
+          {{ selectedCategory.parentName }}
+        </span>
+
+        <span class="categories__name" (click)="openCategoriesDialog()">
+          <mat-icon class="categories__arrow">
+            keyboard_arrow_right
+          </mat-icon>
+          {{ selectedCategory.name }}
+        </span>
+      </div>
+    </div>
+
+    <div class="market__section market__photos">
+      <h3 class="market__sub-title mat-h3">Фотографии</h3>
+      <app-images-uploader></app-images-uploader>
+    </div>
+
+    <div class="container__footer container__footer--divided">
+      <div class="market__section market__actions">
+        <button
+          [disabled]="!marketAddForm.valid"
+          type="submit"
+          class="market__button"
+          mat-flat-button
+          color="accent"
+        >
+          Разместить объявление
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

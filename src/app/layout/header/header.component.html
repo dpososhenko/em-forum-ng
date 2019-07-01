@@ -1,19 +1,40 @@
-<nav class="container">
-  <div class="header__bar">
-    <div class="header__logo">
-      <mat-icon class="logo__icon">aspect_ratio</mat-icon>
-      <span class="logo__text mat-body-strong">EM Forum</span>
+<div
+  class="header"
+  [ngClass]="{ 'header--active': isNavActive }"
+>
+  <nav class="container">
+    <div class="header__bar">
+      <div class="header__logo logo" routerLink="/">
+        <mat-icon class="logo__icon">aspect_ratio</mat-icon>
+        <span class="logo__text mat-body-strong">EM Forum</span>
+      </div>
+
+      <div class="header__burger" (click)="toggleNav()">
+        <mat-icon class="navigation__button">menu</mat-icon>
+      </div>
+
+      <div
+        class="header__navigation navigation"
+        [ngClass]="{ 'header__navigation--active': isNavActive }"
+      >
+        <div class="navigation__close" (click)="toggleNav()">
+          <mat-icon class="navigation__button">close</mat-icon>
+        </div>
+        <div class="navigation__list" (click)="toggleNav()">
+          <button routerLink="/market" mat-button>Купи - Продай</button>
+          <button mat-button>Мастер</button>
+          <button routerLink="/driver" mat-button>Поехали</button>
+          <button *ngIf="isAdmin$ | async" routerLink="/admin" mat-button>Администрирование</button>
+        </div>
+      </div>
     </div>
 
-    <div class="header__navigation">
-      <button [routerLink]="['/market']" mat-button>Купи - Продай</button>
-      <button mat-button>Мастер</button>
-      <button mat-button>Поехали</button>
-      <button mat-button>Новости ЖК</button>
+    <div class="header__account">
+      <app-auth-widget></app-auth-widget>
     </div>
-  </div>
+  </nav>
+</div>
 
-  <div class="header__account">
-    <app-auth-widget></app-auth-widget>
-  </div>
-</nav>
+<div class="content">
+  <ng-content></ng-content>
+</div>

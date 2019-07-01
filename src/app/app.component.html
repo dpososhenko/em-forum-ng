@@ -1,6 +1,9 @@
-<app-header class="app__header"></app-header>
-<app-search *ngIf="showSearchBar$ | async" class="app__search"></app-search>
+<app-header class="app__header">
+  <app-search [hidden]="!(showSearchBar$ | async)" class="app__search"></app-search>
+</app-header>
+
 <div class="app__content">
   <router-outlet></router-outlet>
 </div>
+
 <app-footer class="app__footer"></app-footer>

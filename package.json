@@ -1,15 +1,21 @@
 {
   "name": "em-forum-ng",
   "version": "0.0.0",
+  "engines": {
+    "node": "8.11.2",
+    "npm": "5.6.0"
+  },
   "scripts": {
     "ng": "ng",
-    "serve": "ng serve",
+    "serve": "ng serve -- --proxy-config ./proxy.dev.json",
+    "serve:int": "ng serve -- --proxy-config ./proxy.int.json",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
   "private": true,
+  "postinstall": "ng build --aot -prod",
   "dependencies": {
     "@angular/animations": "^7.0.0",
     "@angular/cdk": "^7.0.1",
@@ -22,7 +28,11 @@
     "@angular/platform-browser": "~7.0.0",
     "@angular/platform-browser-dynamic": "~7.0.0",
     "@angular/router": "~7.0.0",
+    "@ngrx/effects": "^7.0.1",
+    "@ngrx/store": "latest",
+    "@ngrx/store-devtools": "^7.3.0",
     "core-js": "^2.5.4",
+    "express": "^4.17.1",
     "material-design-icons": "^3.0.1",
     "normalize.css": "^8.0.0",
     "rxjs": "~6.3.3",

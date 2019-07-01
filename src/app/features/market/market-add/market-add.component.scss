@@ -1,0 +1,76 @@
+@import "../../../../styles/typo";
+@import "../../../../styles/colors";
+@import "../../../../styles/screens";
+
+:host {
+  @include t-body();
+}
+
+.market {
+  &__section {
+    margin-bottom: 16px;
+
+    ::ng-deep {
+      button {
+        width: 100%;
+
+        @include tablet() {
+          width: auto;
+        }
+      }
+    }
+  }
+
+  &__title {
+    margin: 0;
+  }
+
+  &__sub-title {
+    margin-bottom: 8px;
+  }
+
+  &__name, &__description {
+    display: flex;
+    flex: auto;
+
+    * {
+      width: 100%;
+    }
+
+    ::ng-deep {
+      .mat-form-field {
+        .mat-form-field-wrapper {
+          margin: 0;
+          padding: 0;
+        }
+      }
+    }
+  }
+
+  &__heading {
+    margin-left: 8px;
+  }
+}
+
+.categories {
+  &__path {
+    @include t-body--bold();
+
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    cursor: pointer;
+
+    @include tablet() {
+      flex-direction: row;
+    }
+  }
+
+  &__name {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-self: start;
+    color: $primary;
+  }
+}

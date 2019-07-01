@@ -6,10 +6,30 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./images-uploader.component.scss']
 })
 export class ImagesUploaderComponent implements OnInit {
+  public imgSrcList: string[] = [];
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  public onFileChanged(event): void {
+    const files: File[] = event.target.files;
+
+    // TODO: updated with material errors + open new select window
+    if (files.length > 5) {
+      alert('Max count of files');
+      return;
+    }
+
+    files.forEach = Array.prototype.forEach;
+
+    files.forEach((file: File) => {
+      const reader: FileReader = new FileReader();
+
+      reader.onload = (readerEvent: ProgressEvent & { target: { result: string } }): void => {
+        this.imgSrcList.push(readerEvent.target.result);
+      };
+      reader.readAsDataURL(file);
+    });
   }
-
 }

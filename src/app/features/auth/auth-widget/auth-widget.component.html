@@ -1,0 +1,23 @@
+<div *ngIf="!(isAuthenticated$ | async)" class="user user--out">
+  <div class="user__cta">
+    <button mat-button (click)="login()">Войти</button>
+    <button mat-button>Регистрация</button>
+  </div>
+  <mat-icon class="user__icon">
+    account_box
+  </mat-icon>
+</div>
+
+<div *ngIf="isAuthenticated$ | async" class="user user--in">
+  <div class="user__avatar">
+    <mat-icon>
+      account_box
+    </mat-icon>
+
+<!--    <img [src]="currentUser.avatarUrl" *ngIf="currentUser.avatarUrl"/>-->
+  </div>
+
+  <div class="user__full-name">
+    Full Name
+  </div>
+</div>

@@ -1,15 +1,9 @@
 @import "~src/styles/colors";
 
 :host {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  height: 100%;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  grid-template-columns: 100%;
+  min-height: 100%;
   background-color: $body-bg;
-}
-
-.app {
-  &__content {
-    flex: auto;
-  }
 }

@@ -1,9 +1,11 @@
 export interface Category {
   name: string;
-  id: string;
+  _id: string;
   parent: string;
+  parentName?: string;
   grandParent: string;
-  child: boolean;
+  grandParentName?: string;
+  children: boolean;
 }
 
 export enum CategoryLevel {

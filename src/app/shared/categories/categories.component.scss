@@ -5,6 +5,8 @@
 
   display: flex;
   width: 100%;
+  height: calc(60vh - 190px);
+  overflow: hidden;
 }
 
 .categories {
@@ -13,17 +15,16 @@
   width: 100%;
   flex-direction: column;
 
-  &__header {
-    padding: 16px;
-  }
-
   &__main {
-    padding: 16px;
     display: flex;
-    justify-content: start;
   }
 }
 
 .category {
-  width: calc(100% / 3);
+  overflow: scroll;
+  width: calc(60vw / 3);
+
+  &:nth-child(2) {
+    margin: 0 10%;
+  }
 }

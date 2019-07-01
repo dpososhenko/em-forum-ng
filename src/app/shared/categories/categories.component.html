@@ -1,8 +1,8 @@
 <div class="categories">
-  <div class="categories__header">
+  <div matDialogTitle class="categories__header">
     Выберите подходящую вам категорию
   </div>
-  <div class="categories__main">
+  <div matDialogContent class="categories__main">
     <app-categories-list
       class="category"
       (categorySelected)="selectCategory($event)"

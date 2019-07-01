@@ -1,0 +1,56 @@
+@import "~src/styles/typo";
+@import "~src/styles/screens";
+
+$image__size--mobile: calc(80vw / 5);
+$image__size--tablet: 80px;
+
+:host {
+  @include t-body();
+}
+
+.uploader {
+  &__preview {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+
+    &--stretched {
+      justify-content: space-between;
+
+      .uploader__image {
+        margin-right: 0;
+      }
+    }
+
+    @include tablet() {
+      &--stretched {
+        justify-content: start;
+
+        .uploader__image {
+          margin-right: 8px;
+        }
+      }
+    }
+  }
+
+  &__image {
+    width: $image__size--mobile;
+    height: $image__size--mobile;
+    object-fit: cover;
+    margin-right: 8px;
+
+    @include tablet() {
+      width: $image__size--tablet;
+      height: $image__size--tablet;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  &__input {
+    display: none;
+  }
+}

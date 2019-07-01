@@ -1,9 +1,6 @@
 // Reset Default Browser Styles ~ normalize.css
 @import "~normalize.css/normalize.css";
 
-// Material Theme
-@import "~@angular/material/prebuilt-themes/indigo-pink.css";
-
 // Material Fonts
 @import "~@angular/material/theming";
 
@@ -12,3 +9,6 @@
 
 // Layout
 @import "styles/layout";
+
+// Theme setup
+@import "styles/theme";

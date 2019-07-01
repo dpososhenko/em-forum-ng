@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ImagesUploaderComponent } from './images-uploader/images-uploader.component';
 import { CategoriesComponent } from './categories/categories.component';
-import { MatDialogModule, MatIconModule } from '@angular/material';
+import { MatButtonModule, MatDialogModule, MatIconModule } from '@angular/material';
 import { CategoriesListComponent } from './categories-list/categories-list.component';
 
 @NgModule({
@@ -11,6 +11,7 @@ import { CategoriesListComponent } from './categories-list/categories-list.compo
 
     MatIconModule,
     MatDialogModule,
+    MatButtonModule,
   ],
   declarations: [
     ImagesUploaderComponent,
@@ -20,6 +21,7 @@ import { CategoriesListComponent } from './categories-list/categories-list.compo
   exports: [
     MatIconModule,
     MatDialogModule,
+    MatButtonModule,
 
     ImagesUploaderComponent,
     CategoriesComponent,

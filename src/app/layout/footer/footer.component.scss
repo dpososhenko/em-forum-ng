@@ -4,7 +4,14 @@
 :host {
   @include t-body;
 
-  display: flex;
   color: $white;
   background-color: $footer-bg;
+}
+
+.footer {
+  display: flex;
+
+  .container {
+    padding: 0;
+  }
 }

@@ -1,3 +1,29 @@
-<p>
-  images-uploader works!
-</p>
+<div class="uploader">
+  <div class="uploader__form" *ngIf="!imgSrcList.length">
+    <input
+      class="uploader__input"
+      type="file"
+      (change)="onFileChanged($event)"
+      multiple
+      #fileInput>
+
+    <button
+      mat-stroked-button
+      color="primary"
+      (click)="fileInput.click()"
+    >
+      Добавить фотографии
+    </button>
+  </div>
+
+  <div
+    class="uploader__preview"
+    [ngClass]="{ 'uploader__preview--stretched':  imgSrcList.length === 5 }"
+    *ngIf="imgSrcList.length"
+  >
+    <img
+      class="uploader__image"
+      *ngFor="let imgSrc of imgSrcList"
+      [src]="imgSrc">
+  </div>
+</div>

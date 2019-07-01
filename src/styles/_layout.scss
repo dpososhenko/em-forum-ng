@@ -1,3 +1,6 @@
+@import "~src/styles/screens";
+@import "~src/styles/colors";
+
 html, body {
   width: 100%;
   height: 100%;
@@ -5,5 +8,38 @@ html, body {
 
 .container {
   width: 90%;
+  max-width: 1200px;
   margin: 0 auto;
+  padding: 16px 0;
+
+  @include tablet() {
+    width: 86%;
+  }
+
+  &__header {
+    padding-bottom: 16px;
+
+    &--divided {
+      margin-bottom: 16px;
+      border-bottom: 1px solid $border-color;
+    }
+  }
+
+  &__footer {
+    padding: 16px 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+
+    &--divided {
+      margin-top: 16px;
+      border-top: 1px solid $border-color;
+    }
+  }
+}
+
+.dialog__panel-scroll {
+  .mat-dialog-container {
+    overflow: hidden;
+  }
 }

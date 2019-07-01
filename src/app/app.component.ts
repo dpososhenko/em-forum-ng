@@ -13,7 +13,9 @@ export class AppComponent implements OnInit, OnDestroy {
   showSearchBar$: Observable<boolean>;
   unsubscribe$: Subject<void> = new Subject();
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+  ) {}
 
   ngOnInit() {
     this.showSearchBar$ = this.router.events.pipe(

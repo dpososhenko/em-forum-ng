@@ -1,0 +1,47 @@
+@import '~src/styles/typo';
+@import '~src/styles/colors';
+@import '~src/styles/screens';
+
+:host {
+  @include t-body;
+
+  display: flex;
+  align-items: center;
+}
+
+.user {
+  &--in {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  &__cta {
+    display: none;
+
+    @include tablet() {
+      display: flex;
+    }
+  }
+
+  &__icon {
+    display: flex;
+
+    @include tablet() {
+      display: none;
+    }
+  }
+
+  &__avatar {
+    display: flex;
+    align-items: center;
+    color: $accent-text;
+    margin-right: 4px;
+
+    .mat-icon {
+      width: auto;
+      height: auto;
+      font-size: 24px;
+    }
+  }
+}

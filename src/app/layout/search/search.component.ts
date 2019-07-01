@@ -1,8 +1,11 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { CookieSpecific } from 'src/app/core/cookie/cookie.config';
 import { Complexes, ComplexTypes } from 'src/app/core/complex/complex.config';
-import { CookieService } from 'src/app/core/cookie/cookie.service';
+import { Store, select } from '@ngrx/store';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { getComplex } from 'src/app/core/complex/complex.selectors';
+import { ChangeComplex } from 'src/app/core/complex/complex.actions';
+import { MatSelectChange } from '@angular/material';
 
 @Component({
   selector: 'app-search',
@@ -10,31 +13,20 @@ import { CookieService } from 'src/app/core/cookie/cookie.service';
   styleUrls: ['./search.component.scss']
 })
 export class SearchComponent implements OnInit {
-  @ViewChild('searchInputRef') searchInputRef: ElementRef;
-
-  public isSearchFieldFocused = false;
-  public showSearchFeature = false;
-  public searchInput: FormControl;
+  public searchInput: FormControl = new FormControl('');
   public complexes = Complexes;
-  public chosenComplex: string;
+  public chosenComplex$: Observable<ComplexTypes>;
+  public isSearchFocused$: BehaviorSubject<boolean> = new BehaviorSubject(false);
 
-  constructor() {}
+  constructor(
+    private store: Store<{ complex: ComplexTypes }>,
+  ) {}
 
   ngOnInit() {
-    this.showSearchFeature = !!CookieService.getCookie('all.features.search');
-    this.chosenComplex = ComplexTypes.All;
-    this.searchInput = new FormControl('');
+    this.chosenComplex$ = this.store.pipe(select(getComplex));
   }
 
-  @CookieSpecific('all.features.search')
-  public focusSearchInput() {
-    this.isSearchFieldFocused = true;
-    this.searchInputRef.nativeElement.focus();
+  public complexChanged(event: MatSelectChange) {
+    this.store.dispatch(new ChangeComplex(event.value));
   }
-
-  @CookieSpecific('all.features.search')
-  public onBlurSearchInput() {
-    this.isSearchFieldFocused = false;
-  }
-
 }
